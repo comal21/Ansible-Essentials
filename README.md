@@ -422,9 +422,6 @@ ansible all -a "sudo ls -l /home/cloudthat/ansible/"
 cd ~/ansible-labs/
 ```
 ```
-mkdir file && cd file
-```
-```
 vi implement-vars.yml
 ```
 
@@ -499,7 +496,7 @@ vi index1.html
 ```
 **save the file using** `ESCAPE + :wq!`
 ```
-ansible-playbook implement-vars.yml --extra-vars "source=/home/ec2-user/labs/file/index1.html"
+ansible-playbook implement-vars.yml --extra-vars "source=/home/ec2-user/labs/index1.html"
 ```
 
 Check the home page on browser. It should show the new page now
@@ -552,7 +549,7 @@ vi implement-vars.yml
 ```
 **save the file using** `ESCAPE + :wq!`
 ```
-$ansible-playbook implement-vars.yml
+ansible-playbook implement-vars.yml
 ```
 Check the home page on browser. 
 It should show the original page with msg "This is the Selected Home Page"
