@@ -997,24 +997,24 @@ Task 1: Implementing Ansible Roles
 
 cd ~/
 
-# Lets uninstall httpd. After that, we will use ansible role to install it.
+Lets uninstall httpd. After that, we will use ansible role to install it.
 $ ansible-playbook /home/ec2-user/ansible-labs/uninstall-apache-pb.yml (Please provide the correct path name)
 
-# Install tree. A tree is a recursive directory listing program that produces a depth-indented listing of files. 
+Install tree. A tree is a recursive directory listing program that produces a depth-indented listing of files. 
 
 $ sudo yum install tree -y
 
-# Lets create the code for Role labs
+Lets create the code for Role labs
 $ cd ~/
 $ mkdir roles && cd roles
 
-#Now inside the roles directory, create two different directories for different roles, namely webrole and dbrole. Then switch to the directory dbrole and then create tasks directory inside dbrole
+Now inside the roles directory, create two different directories for different roles, namely webrole and dbrole. Then switch to the directory dbrole and then create tasks directory inside dbrole
 
 
 $ mkdir webrole dbrole && cd dbrole
 $ mkdir tasks
 
-#This main.yml is the playbook which will get executed to make an effect of this role and put the below content in the main.yml file
+This main.yml is the playbook which will get executed to make an effect of this role and put the below content in the main.yml file
 
 $ vi tasks/main.yml
 
@@ -1029,10 +1029,10 @@ $ vi tasks/main.yml
     state: started 
     enabled: true
 
-#save the file using "ESCAPE + :wq!"
+save the file using "ESCAPE + :wq!"
 
 
-#Now change your directory to webrole 
+Now change your directory to webrole 
 
 $ cd .. && cd webrole/
 $ mkdir files tasks && cd files/
@@ -1045,14 +1045,14 @@ $ vi index.html
   </body>
 </html>
 
-#save the file using "ESCAPE + :wq!"
+save the file using "ESCAPE + :wq!"
 
-#Then go to the task directory as below and create main.yml 
+Then go to the task directory as below and create main.yml 
 
 $ cd .. && cd tasks/
 $ vi main.yml
 
-# Add the given content, by pressing "INSERT" 
+ Add the given content, by pressing "INSERT" 
 
 ---
 
@@ -1080,19 +1080,19 @@ $ vi main.yml
     state=started
 
 
-# save the file using "ESCAPE + :wq!"
+save the file using "ESCAPE + :wq!"
 
-#After the creation of this file, we are done with the complete hierarchy of roles, so we will have a look at how it is exactly using tree command
+After the creation of this file, we are done with the complete hierarchy of roles, so we will have a look at how it is exactly using tree command
 
 $ cd ../.. 
 $ tree
 
-#Now change the directory to ansible directory and create the playbook as implement-roles.yml
+Now change the directory to ansible directory and create the playbook as implement-roles.yml
 
 $ cd ..
 $ vi implement-roles.yml
 
-# Add the given content, by pressing "INSERT".
+ Add the given content, by pressing "INSERT".
 ---
  - hosts: all
    become: yes 
@@ -1103,26 +1103,26 @@ $ vi implement-roles.yml
      
 
 
-# save the file using "ESCAPE + :wq!"
+save the file using "ESCAPE + :wq!"
 
-#Execute the playbook
+Execute the playbook
 $ ansible-playbook implement_roles.yml
 
-# Check the home page on browser. (Public DNS)
-# It will show the webpage with msg "We are performing the Roles Lab"
+Check the home page on browser. (Public DNS)
+It will show the webpage with msg "We are performing the Roles Lab"
 
 ==========================================================================================
 Task 2: Installing Java through Ansible Galaxy Roles galaxy
 ==========================================================================================
 
-#Install java form ansible galaxy role from galaxy.ansible.com   
+### Install java form ansible galaxy role from galaxy.ansible.com   
 
-#Now Install the role 'geerlingguy.java' from ansible galaxy repository. 
+Now Install the role 'geerlingguy.java' from ansible galaxy repository. 
 $ ansible-galaxy install geerlingguy.java
 
 $ vi implement-java.yml
 
-# Add the given content, by pressing "INSERT" 
+Add the given content, by pressing "INSERT" 
 
 ---
  - hosts: all
@@ -1130,16 +1130,16 @@ $ vi implement-java.yml
    roles:
      - geerlingguy.java
 
-# save the file using "ESCAPE + :wq!"
+save the file using "ESCAPE + :wq!"
 
-# Before running the playbook, check if java is installed in managed nodes.
+Before running the playbook, check if java is installed in managed nodes.
 ansible all -m command -a "java -version"
-# you will get error
+you will get error
 
-# execute playbook from the control node
-$ ansible-playbook implement-java.yml
+execute playbook from the control node
+ansible-playbook implement-java.yml
 
-# Now, check if java is installed in managed nodes.
+Now, check if java is installed in managed nodes.
 $ ansible all -a "java -version"
 
 ***********************************************************************************************************************************
