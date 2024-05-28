@@ -1129,7 +1129,7 @@ save the file using "ESCAPE + :wq!"
 
 Execute the playbook
 ```
-ansible-playbook implement_roles.yml
+ansible-playbook implement-roles.yml
 ```
 
 Check the home page on browser. (Public DNS)
