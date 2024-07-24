@@ -48,11 +48,9 @@ Authorize aws credentials
 ```
 aws configure
 ```
-#### Enter the Credentials as below. Example:
-| **Access Key ID** | **Secret Access Key** |
-| ----------------- | --------------------- |
-| AKIAXMWJXSSHRD27T6SC | H4Vh0U5oenKfmJ/+FEUcbaGbDjcnGAmZvQLX7zTT |
-
+```
+aws s3 ls
+```
 Install wget so that we can download playbooks from the training material repository 
 ```
 sudo yum install wget -y
