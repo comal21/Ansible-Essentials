@@ -331,33 +331,6 @@ cd /home/ec2-user/ansible-labs
 ```
 vi putfile.yml
 ```
-
-Add the given content, by pressing "INSERT" 
-```
----
-- hosts: all
-  become: yes
-  tasks:
-    - name: Creating a new user cloudthat
-      user:
-        name: cloudthat
-    - name: Creating a directory for the new user
-      file:
-        path: /home/cloudthat
-        state: directory
-```
-
-
-**save the file using** `ESCAPE + :wq!`
-
-Now run the playbook as follow
-```
-ansible-playbook putfile.yml
-```
-Now modify the playbook to add another child directory and a file inside cloudthat's home directory
-```
-vi putfile.yml
-```
 Add the given content, by pressing "INSERT" 
 ```
 ---
@@ -394,11 +367,10 @@ Add the given content, by pressing "INSERT"
 
 ```
 **save the file using** `ESCAPE + :wq!`
-if you use '|' then the new line characters will be retained.
 
-we can execute it step by step
+we can execute it 
 ```
-ansible-playbook putfile.yml --step
+ansible-playbook putfile.yml 
 ```
 
 check if the lines are added in hello.txt
