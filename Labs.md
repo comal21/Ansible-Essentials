@@ -522,7 +522,7 @@ vi implement-vars.yml
 ```
 **save the file using** `ESCAPE + :wq!`
 ```
-$ansible-playbook implement-vars.yml
+ansible-playbook implement-vars.yml
 ```
 Check the home page on browser. 
 It should show the original page with msg "This is the Selected Home Page"
