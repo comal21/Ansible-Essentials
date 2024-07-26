@@ -453,9 +453,9 @@ The web page should display the message "This is the Selected Home Page"
 -------------------------------------------------------------------------------------------------
 ### Task 2 : Create an alternate index_new.html file
 
-create index1.html in ~/ansible-labs/
+create index1.html 
 ```
-cd /home/ec2-user/ansible-labs/
+cd /home/ec2-user/ansible-labs/file/
 ```
 ```
 vi index1.html
@@ -469,7 +469,7 @@ vi index1.html
 ```
 **save the file using** `ESCAPE + :wq!`
 ```
-ansible-playbook implement-vars.yml --extra-vars "source=/home/ec2-user/labs/file/index1.html"
+ansible-playbook implement-vars.yml --extra-vars "source=/home/ec2-user/ansible-labs/file/index1.html"
 ```
 
 Check the home page on browser. It should show the new page now
