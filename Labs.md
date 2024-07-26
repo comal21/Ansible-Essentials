@@ -493,9 +493,10 @@ source: /home/ec2-user/ansible-labs/index.html
 ```
 save the file using "ESCAPE + :wq!"
 
+Now edit implement-vars.yml playbook. Replace vars block with vars_file reference.
+
 Add the given content, by pressing "INSERT" 
 
-Now edit implement-vars.yml playbook. Replace vars block with vars_file reference.
 ```
 vi implement-vars.yml
 ```
