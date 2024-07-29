@@ -691,6 +691,44 @@ Verify if the users mentioned in the list were added by using an Ansible ad-hoc 
 ```
 ansible all -a "tail -n 3 /etc/passwd"
 ```
+
+```
+vi loop.yml
+```
+```
+---
+- name: Install multiple packages
+  hosts: all
+  tasks:
+    - name: Install packages on Debian-based systems
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - curl
+        - vim
+      when: ansible_os_family == "Debian"
+
+    - name: Install packages on Red Hat-based systems
+      yum:
+        name: "{{ item }}"
+        state: absent
+      loop:
+        - git
+        - curl
+        - vim
+      when: ansible_os_family == "RedHat"
+```
+**save the file using** `ESCAPE + :wq!`
+
+Execute the playbook
+```
+ansible-playbook looplab.yml
+```
+```
+ansible all -m shell -a "rpm -q git curl vim" -u your_user
+```
 -------------------------------------------------------------------------------------
 ### Task 2: Tags with Ansible Playbooks
 
@@ -729,6 +767,51 @@ ansible-playbook -t "logging" tagslabs.yml
 ```
 ```
 ansible-playbook -t "packages" tagslabs.yml
+```
+```
+vi tags.yml
+```
+```
+---
+- name: Setup web server
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install httpd
+      yum:
+        name: httpd
+        state: present
+      tags: apache
+
+    - name: Start httpd service
+      service:
+        name: httpd
+        state: started
+      tags: apache
+
+    - name: Install MySQL
+      yum:
+        name: mysql-server
+        state: present
+      tags: mysql
+
+    - name: Start MySQL service
+      service:
+        name: mysqld
+        state: started
+      tags: mysql
+```
+**save the file using** `ESCAPE + :wq!`
+
+Execute the playbook
+```
+ansible-playbook tags.yml
+```
+```
+ansible-playbook tags.yml --tags "apache"
+```
+```
+ansible-playbook tags.yml --tags "mysql"
 ```
 -----------------------------------------------------------------------------------
 ### Task 3: Prompts with Ansible Playbooks
