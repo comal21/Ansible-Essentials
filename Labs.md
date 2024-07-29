@@ -1141,9 +1141,9 @@ ansible-playbook implement-roles.yml
 Check the home page on browser. (Public DNS)
 It will show the webpage with msg "We are performing the Roles Lab"
 
-==========================================================================================
+-----------------------------------------------------
 Task 2: Installing Java through Ansible Galaxy Roles galaxy
-==========================================================================================
+====================================================
 
 ### Install java form ansible galaxy role from galaxy.ansible.com   
 
