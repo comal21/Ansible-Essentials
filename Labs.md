@@ -766,6 +766,7 @@ ansible-playbook -t "logging" tagslabs.yml
 ```
 ansible-playbook -t "packages" tagslabs.yml
 ```
+### Task 2.2: Tags with Ansible Playbook [SELF EXERCISE]
 ```
 vi tags.yml
 ```
@@ -844,7 +845,6 @@ ansible-playbook promptlab.yml
 ```
 ansible all -m "command" -a "yum list installed httpd"
 ```
-
 
 --------------------------------------------------------------------------------------------------
 ### Task 4: Until function
