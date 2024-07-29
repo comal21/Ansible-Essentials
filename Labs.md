@@ -904,8 +904,6 @@ vi blklab.yml
 ---
 - hosts: all
   become: yes
-  user: ec2-user
-  connection: ssh
   gather_facts: no
   tasks:
     - block:
@@ -919,14 +917,14 @@ vi blklab.yml
             name: "{{ db_package }}"
             state: latest
       always:
-        - name: Start {{ db_service }} service
-          service:
-            name: "{{ db_service }}"
-            state: started
+        - name: Remove temporary files
+          file:
+            path: /tmp/ansible_temp_files
+            state: absent
   vars:
     web_package: http
-    db_package: mariadb-server
-    db_service: mariadb
+    db_package: postgresql-server
+   
 ```
 **save the file using** `ESCAPE + :wq!`
 
