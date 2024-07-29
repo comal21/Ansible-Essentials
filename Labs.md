@@ -842,7 +842,7 @@ If no package is mentioned, telnet is installed by default
 ansible-playbook promptlab.yml
 ```
 ```
-ansible all -m "command" -a "rpm -qa | grep httpd"
+ansible all -m "command" -a "yum list installed httpd"
 ```
 
 
