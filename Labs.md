@@ -616,6 +616,9 @@ ansible all -m command -a "yum list wget curl" -b
 ```
 cd ~/ansible-labs/file
 ```
+```
+cat implement-vars.yml
+```
 Now using the vault utility, encrypt the playbook that we created. Give the passwd of your choice
 ```
 ansible-vault encrypt implement-vars.yml
