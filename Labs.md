@@ -757,14 +757,6 @@ If no package is mentioned, telnet is installed by default
 ```
 ansible-playbook promptlab.yml
 ```
-
-Verify if the specified package httpd is installed. SSH into one of the machines and verify using the command 
-```
-ssh ec2-user@< managed_node_private_ip >
-```
-```
-rpm -qa | grep httpd
-```
 ```
 ansible all -m "command" -a "rpm -qa | grep httpd"
 ```
@@ -816,47 +808,8 @@ you can check the status of httpd by
 sudo service httpd status
 ```
 
----------------------------------------------------------------------------------------------
-### Task 5: Run Once with Ansible Playbook
-
-Create and edit rolab.yml in the same labs directory 
-```
-vi rolab.yml
-```
-```
----
-- hosts: all
-  become: yes
-  user: ec2-user
-  connection: ssh
-  gather_facts: no
-  tasks:
-    - name: Recording uptime 
-      raw: /usr/bin/uptime >> /home/ec2-user/uptime
-      run_once: true
-```
-**save the file using** `ESCAPE + :wq!`
-
-Execute the playbook
-```
-ansible-playbook rolab.yml
-```
-Verify if the file exists and has the right contents on either of the client machines(manage nodes)
-```
-ansible all -a "cat /home/ec2-user/uptime"
-```
-
-now open the file and edit parameter as run_once: false 
-Execute the playbook again
-```
-ansible-playbook rolab.yml
-```
-Verify if the file exists and has the right contents on the client machines(manage nodes)
-```
-ansible all -a "cat /home/ec2-user/uptime"
-```
 -----------------------------------------------------------------------------------------------
-### Task 6: Blocks with Ansible Playbook
+### Task 5: Blocks with Ansible Playbook
 
 Create and edit blklab.yml in the same labs directory 
 Notice that the “web_package” variable is an invalid package. Due to the invalid package in a block, tasks under rescue will run
