@@ -1031,15 +1031,10 @@ vi tasks/main.yml
 ```
 ```
 ---
-- name: Install MariaDB server package
+- name: Install postgresql server package
   yum: 
-    name: mariadb-server 
+    name: postgresql-server 
     state: present
-- name: Start MariaDB Service
-  service: 
-    name: mariadb 
-    state: started 
-    enabled: true
 ```
 save the file using "ESCAPE + :wq!"
 
