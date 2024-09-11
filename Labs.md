@@ -138,11 +138,6 @@ get memory details of the hosts using the below ad-hoc command
 ```
 ansible all -m command -a "free -h"
 ```
-OR
-```
-ansible all -a "free -h"
-```
-
 Create a user ansible-new in the 2 nodes + the control node
 This creates the new user and the home directory /home/ansible-new
 ```
