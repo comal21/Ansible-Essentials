@@ -304,18 +304,17 @@ vi uninstall-apache-pb.yml
 ```
 Retain only first task. Replace 'state: latest' with 'state: absent'
 
-Check if the playbook is ok
-```
-ansible-playbook uninstall-apache-pb.yml --check
-```
-
 Now run the playbook and check in the browser if the web page exists.
 ```
 ansible-playbook uninstall-apache-pb.yml
 ```
 
-Check the browser with the corresponding IPv4 DNS name and ensure webpage is removed.
-
+```
+curl <private_ip of node1> 
+```
+```
+curl <private_ip of node2>
+```
 
 ## Lab 4: Exploring more on Ansible Playbooks
 -----------------------------------------------------------------------------------
