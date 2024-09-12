@@ -644,7 +644,7 @@ ansible-vault rekey implement-vars.yml
 
 Open the encrypted file and see the content using 
 ```
-cat implement-vars.yml
+ansible-vault view implement-vars.yml
 ```
 
 decrypt the file
