@@ -682,42 +682,7 @@ Verify if the users mentioned in the list were added by using an Ansible ad-hoc 
 ```
 ansible all -a "tail -n 3 /etc/passwd"
 ```
-### Task 1.2: Loops with Ansible Playbook [SELF EXERCISE]
-```
-vi loop.yml
-```
-```
----
-- name: Install multiple packages
-  hosts: all
-  tasks:
-    - name: Install packages on Debian-based systems
-      apt:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - git
-        - curl-minimal
-      when: ansible_os_family == "Debian"
 
-    - name: Install packages on Red Hat-based systems
-      yum:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - git
-        - curl-minimal
-      when: ansible_os_family == "RedHat"
-```
-**save the file using** `ESCAPE + :wq!`
-
-Execute the playbook
-```
-ansible-playbook loop.yml -b
-```
-```
-ansible all -m shell -a "rpm -q git curl-minimal" 
-```
 -------------------------------------------------------------------------------------
 ### Task 2: Tags with Ansible Playbooks
 
