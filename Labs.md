@@ -404,7 +404,7 @@ Add the given content, by pressing "INSERT"
     hostname: all
     package1: httpd
     destination: /var/www/html/index.html 
-    source: /home/ec2-user/ansible-labs/index.html
+    source: /home/ec2-user/ansible-labs/file/index.html
   tasks:
     - name: Install defined package
       yum:
@@ -440,9 +440,7 @@ vi index.html
 ansible-playbook implement-vars.yml
 ```
 
-Go to aws console. Copy 'Public IPv4 DNS' name from the instance details.
-Paste that into a browser and observe that the web page is coming up
-The web page should display the message "This is the Selected Home Page"
+curl private ip
 
 -------------------------------------------------------------------------------------------------
 ### Task 2 : Create an alternate index_new.html file
@@ -482,7 +480,7 @@ add the folowing in the myvariables.yml file.
 hostname: all
 package1: httpd
 destination: /var/www/html/index.html
-source: /home/ec2-user/ansible-labs/index.html
+source: /home/ec2-user/ansible-labs/file/index.html
 ...
 ```
 save the file using "ESCAPE + :wq!"
@@ -519,8 +517,7 @@ vi implement-vars.yml
 ```
 ansible-playbook implement-vars.yml
 ```
-Check the home page on browser. 
-It should show the original page with msg "This is the Selected Home Page"
+curl private ip
 
 
 ## Lab 6 :Task Inclusion
