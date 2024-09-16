@@ -693,24 +693,23 @@ vi tagslabs.yml
 ```
 ```
 ---
-hosts: all
-become: yes
-user: ec2-user
-connection: ssh
-gather_facts: no
-tasks:
-  - name: Install telnet
-    yum:
-      name: telnet
-      state: latest
-    tags:
-      - packages
+- hosts: all
+  become: yes
+  user: ec2-user
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install telnet
+      yum:
+        name: telnet
+        state: latest
+      tags:
+        - packages
 
-  - name: Verifying telnet installation
-    shell: "yum list installed telnet > /home/ec2-user/pkg.log"
-    tags:
-      - logging
-
+    - name: Verifying telnet installation
+      shell: "yum list installed telnet > /home/ec2-user/pkg.log"
+      tags:
+        - logging
 ```
 
 **save the file using** `ESCAPE + :wq!`
