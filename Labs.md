@@ -693,20 +693,24 @@ vi tagslabs.yml
 ```
 ```
 ---
-- hosts: all
-  become: yes
-  user: ec2-user
-  connection: ssh
-  gather_facts: no
-  tasks:
-    - name: Install telnet
-      yum: pkg=telnet state=latest
-      tags:
-        - packages
-    - name: Verifying telnet installation
-      raw: yum list installed | grep telnet > /home/ec2-user/pkg.log
-      tags:
-        - logging
+hosts: all
+become: yes
+user: ec2-user
+connection: ssh
+gather_facts: no
+tasks:
+  - name: Install telnet
+    yum:
+      name: telnet
+      state: latest
+    tags:
+      - packages
+
+  - name: Verifying telnet installation
+    shell: "yum list installed telnet > /home/ec2-user/pkg.log"
+    tags:
+      - logging
+
 ```
 
 **save the file using** `ESCAPE + :wq!`
@@ -779,16 +783,18 @@ vi promptlab.yml
 ---
 - hosts: all
   become: yes
-  user: ec2-user
-  connection: ssh
   vars_prompt:
     - name: pkginstall
-      prompt: Which package do you want to install?
+      prompt: "Which package do you want to install?"
       default: telnet
       private: no
+
   tasks:
     - name: Install the package specified
-      yum: pkg={{ pkginstall }} state=latest
+      yum:
+        name: "{{ pkginstall }}"
+        state: latest
+
 ```
 
 **save the file using** `ESCAPE + :wq!`
@@ -813,8 +819,7 @@ vi untillab.yml
 ---
 - hosts: all
   become: yes
-  connection: ssh
-  user: ec2-user
+
   tasks:
   - name: Install Apache Web Server
     yum:
