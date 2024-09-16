@@ -845,7 +845,7 @@ You can use the same key (as used for CN) to login to managed node
 ssh ec2-user@< managed_node_private_ip >
 ```
 ```
-sudo service httpd start
+sudo service httpd stop
 ```
 
 you can check the status of httpd by
